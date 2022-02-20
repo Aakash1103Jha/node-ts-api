@@ -1,0 +1,11 @@
+"use strict";
+var express = require("express");
+var cors = require("cors");
+var app = express();
+var PORT = process.env.PORT || 4000;
+app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+var MainRoute = require("./routes/route");
+app.use("/", MainRoute);
+app.listen(PORT, function () { return console.log("Server running on port " + PORT); });
