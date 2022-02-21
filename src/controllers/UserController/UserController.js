@@ -36,13 +36,22 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var router = require("express").Router();
-router.get("/home/:user", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var user;
+var onResgiter = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var user, response;
     return __generator(this, function (_a) {
-        user = req.params.user;
-        res.status(200).send("Hello " + user);
+        if (!req.body)
+            return [2, res.status(400).json("Invalid login data")];
+        user = {
+            username: req.body.username,
+            password: req.body.password,
+        };
+        response = {
+            data: user,
+            message: "Registration successful",
+            statusCode: 200,
+        };
+        res.status(200).json(response);
         return [2];
     });
-}); });
-module.exports = router;
+}); };
+module.exports = { onResgiter: onResgiter };

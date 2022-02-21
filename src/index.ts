@@ -10,7 +10,10 @@ app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
-const MainRoute = require("./routes/route")
-app.use("/", MainRoute)
+const HomeRoute = require("./routes/HomeRoute/HomeRoute")
+const UserRoute = require("./routes/UserRoute/UserRoute")
+
+app.use("/", HomeRoute)
+app.use("/", UserRoute)
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`))
